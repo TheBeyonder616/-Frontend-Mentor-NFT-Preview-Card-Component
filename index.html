@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+    <title>Frontend Mentor | NFT preview card component</title>
+  </head>
+  <body>
+    <main id="main" class="main">
+      <article class="card-preview">
+        <!-- Header -->
+        <header class="card-preview__header lazy-img-container">
+          <img
+            data-lazy
+            class="lazy-img"
+            data-src="./images/image-equilibrium.jpg"
+            alt="A picture on an Equilibrium NFT"
+          />
+        </header>
+        <!-- Headiing -->
+        <section class="card-preview__info">
+          <h1>Equilibrium #3429</h1>
+          <p>Our Equilibrium collection promotes balance and calm.</p>
+
+          <!-- Price and Count down -->
+          <div class="card-preview__info--details">
+            <h2 class="details--img">
+              <span>
+                <img
+                  src="./images/icon-ethereum.svg"
+                  alt="An icon of Ethereum logo"
+                />
+              </span>
+              0.041ETH
+            </h2>
+            <h3 class="heading-tertiary details--img">
+              <span>
+                <img
+                  src="./images/icon-clock.svg"
+                  alt="An icon of a clock"
+                /> </span
+              >3 days left
+            </h3>
+          </div>
+        </section>
+        <hr />
+
+        <!-- Avatar -->
+        <figure class="card-preview__avatar">
+          <div class="card-preview__avatar--img lazy-img-container">
+            <img
+              data-lazy
+              class="lazy-img"
+              data-src="./images/image-avatar.png"
+              alt="An image of mr Jules Wyvern"
+            />
+          </div>
+          <figcaption class="card-preview__avatar--name">
+            <h3 class="heading-tertiary">
+              Creation of
+              <span> Jules Wyvern </span>
+            </h3>
+          </figcaption>
+        </figure>
+      </article>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Peter Godspower</a>.
+    </footer>
+  </body>
+</html>

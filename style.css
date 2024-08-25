@@ -1,0 +1,294 @@
+/*-----------------------------------------------------Base */
+:root {
+  /* Primary*/
+  --crl-Primary-dark: hsl(217, 54%, 11%);
+  --crl-Primary-light: hsl(216, 50%, 16%);
+  /* Secondary */
+  --crl-Secondary-dark: hsl(215, 32%, 27%);
+  --crl-Secondary-light: hsl(215, 51%, 70%);
+  /* Neutral */
+  --crl-Cyan: hsl(178, 100%, 50%);
+  --crl-White: hsl(0, 0%, 100%);
+
+  /* Fonts */
+  --font-Bold: 600;
+  --font-Mid: 400;
+  --font-Regular: 300;
+
+  --_width: clamp(30rem, 90%, 35rem);
+  --_font-size: clamp(1.9rem, 1.5vw, 2rem);
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./Outfit/static/Outfit-Bold.ttf") format("truetype");
+  font-weight: var(--font-Bold);
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./Outfit/static/Outfit-Medium.ttf") format("truetype");
+  font-weight: var(--font-Mid);
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./Outfit/static/Outfit-Regular.ttf") format("truetype");
+  font-weight: var(--font-Regular);
+}
+
+/* -------------------------------------------------Reset*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  /* 10px = 1rem */
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: currentColor;
+}
+
+body {
+  font-family: "Outfit";
+  background-color: var(--crl-Primary-dark);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------Main */
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* article */
+.card-preview {
+  width: var(--_width);
+  aspect-ratio: 1;
+  margin: 5rem auto;
+  padding: 1.5rem 0;
+  background-color: var(--crl-Primary-light);
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(0 0 0 /0.3);
+}
+
+/* header */
+.card-preview .card-preview__header {
+  width: calc(var(--_width) * 0.94);
+  aspect-ratio: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(0 0 0 /0.2);
+}
+
+.card-preview .card-preview__header::before {
+  content: "";
+  inset: 0;
+  width: 0;
+  background-color: transparent;
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+    width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card-preview .card-preview__header::after {
+  content: url("./images/icon-view.svg");
+  top: 40%;
+  left: 40%;
+  opacity: 0;
+  z-index: 2;
+  position: absolute;
+  transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+.card-preview .card-preview__header:hover::before {
+  opacity: 0.3;
+  width: 100%;
+  background-color: var(--crl-Cyan);
+}
+
+.card-preview .card-preview__header:hover::after {
+  opacity: 1;
+}
+
+.card-preview .card-preview__header img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  font-style: italic;
+  object-fit: cover;
+}
+
+/* Information */
+.card-preview .card-preview__info {
+  width: 80%;
+  margin: 1.5rem auto 0 auto;
+}
+
+.card-preview__info h1 {
+  color: var(--crl-White);
+  letter-spacing: 0.5px;
+  font-size: var(--_font-size);
+  font-weight: var(--font-Mid);
+  transition: color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.card-preview__info h1:hover {
+  color: var(--crl-Cyan);
+}
+.card-preview__info p {
+  font-size: calc(var(--_font-size) * 0.8);
+  color: var(--crl-Secondary-light);
+  font-weight: var(--font-Regular);
+  margin-top: 1.8rem;
+  line-height: 1.4;
+}
+
+/* Price & count down */
+.card-preview__info--details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+
+.heading-tertiary {
+  font-size: calc(var(--_font-size) * 0.755);
+  color: var(--crl-Secondary-light);
+  font-weight: var(--font-Bold);
+}
+.card-preview__info--details h2 {
+  font-size: calc(var(--_font-size) * 0.755);
+  color: var(--crl-Cyan);
+}
+
+.details--img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.details--img span img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background-color: var(--crl-Secondary-dark);
+  width: 80%;
+  margin: 1rem auto;
+  opacity: 0.8;
+}
+
+/* Avatar */
+.card-preview__avatar {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.card-preview__avatar--img {
+  overflow: hidden;
+  width: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 0.1rem solid var(--crl-Secondary-light);
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(0 0 0 /0.1);
+}
+.card-preview__avatar--img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  font-style: italic;
+  object-fit: contain;
+}
+
+.card-preview__avatar--name span {
+  color: var(--crl-White);
+  cursor: pointer;
+  transition: color 0.5s ease-in-out;
+}
+.card-preview__avatar--name span:hover {
+  color: var(--crl-Cyan);
+}
+
+/*----------------------------------------------------Footer */
+.attribution {
+  --_font: calc(clamp(1.2rem, 1.6cqw, 1.9rem) * 0.8);
+  font-size: var(--_font);
+  text-align: center;
+  color: var(--crl-Secondary-dark);
+  margin: 1rem auto;
+  font-weight: var(--font-Bold);
+}
+.attribution a,
+.attribution a:active,
+.attribution a:link {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--crl-Secondary-light);
+  animation: magestic 2s infinite 2s;
+}
+
+.attribution a:hover,
+.attribution a:focus {
+  color: var(--crl-Secondary-light);
+}
+
+@keyframes magestic {
+  0%,
+  30% {
+    transform: translate(0);
+  }
+  49.99% {
+    --shadow: rgb(255 25 25 /0.2);
+    border-radius: 1rem;
+    border: 0;
+    box-shadow: inset 0 0.5rem 1rem var(--shadow);
+  }
+  50%,
+  100% {
+    transform: translate(1rem);
+  }
+}
+
+/*------------------------------------------------ Dom State */
+.lazy-img {
+  opacity: 0;
+}
+.lazy-img-container {
+  animation: lazyImage 2s infinite;
+}
+@keyframes lazyImage {
+  0% {
+    background-color: rgb(0 0 0 /0.2);
+  }
+  100% {
+    background-color: rgb(255 255 255 /0.2);
+  }
+}
